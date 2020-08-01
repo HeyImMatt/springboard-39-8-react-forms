@@ -1,15 +1,19 @@
 import React from 'react';
 import './Box.css'
 
-function Box({width, height, boxBackgroundColor}) {
+function Box({idx, removeBox, width, height, boxBackgroundColor}) {
   return (
-    <div 
-    className='Box'
-    style={{
-      width: `${width}px`,
-      height: `${height}px`,
-      backgroundColor: `${boxBackgroundColor}`
-    }}>
+    <div>
+      <div 
+      className='Box'
+      key={idx}
+      style={{
+        width: `${width}px`,
+        height: `${height}px`,
+        backgroundColor: `${boxBackgroundColor}`
+      }}>
+      <button type="button" onClick={() => removeBox(idx)}>X</button>
+      </div>
     </div>
   )
 }

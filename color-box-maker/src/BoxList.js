@@ -25,12 +25,26 @@ function BoxList() {
     setFormData(INITIAL_STATE);
   }
 
+  const removeBox = (idx) => {
+    setBoxesArr((oldBoxesArr) => {
+      let newBoxesArr = [...oldBoxesArr];
+      newBoxesArr.splice(idx, 1);
+      return newBoxesArr;
+    })
+  }
+
   return (
     <div className="box-form">
       <h3>Color Boxes!</h3>
       <p>Enter box parameters to generate a box</p>
       <NewBoxForm formData={formData} submitHandler={submitHandler} changeHandler={changeHandler} />
-      {boxesArr.map( box => <Box width={box.width} height={box.height} boxBackgroundColor={box.boxBackgroundColor} />)}
+      {boxesArr.map( (box, idx) => <Box 
+      idx={idx}
+      removeBox={removeBox}
+      width={box.width} 
+      height={box.height} 
+      boxBackgroundColor={box.boxBackgroundColor} 
+      />)}
     </div>
   );
 }
