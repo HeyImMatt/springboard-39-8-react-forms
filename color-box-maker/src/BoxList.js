@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import Box from './Box';
 import './BoxList.css'
 
 function BoxList() {
   const INITIAL_STATE = {
     width: '',
     height: '',
-    backgroundColor: '',
+    boxBackgroundColor: '',
   }
   const [boxesArr, setBoxesArr] = useState([]);
   const [formData, setFormData] = useState(INITIAL_STATE);
@@ -48,13 +49,14 @@ function BoxList() {
         <label htmlFor="backgroundColor">Box Background Color(hex code or valid css color name):</label>
         <input
           type="text"
-          id="backgroundColor"
-          name="backgroundColor"
-          value={formData.backgroundColor}
+          id="boxBackgroundColor"
+          name="boxBackgroundColor"
+          value={formData.boxBackgroundColor}
           onChange={changeHandler}
         />
         <button>Create Box</button>
       </form>
+      {boxesArr.map( box => <Box width={box.width} height={box.height} boxBackgroundColor={box.boxBackgroundColor} />)}
     </div>
   );
 }
