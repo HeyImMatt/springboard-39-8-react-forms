@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 function BoxList() {
-  const [boxesArr, setBoxesArr] = useState([]);
-  const [formData, setFormData] = useState({
+  const INITIAL_STATE = {
     width: '',
     height: '',
     backgroundColor: '',
-  });
+  }
+  const [boxesArr, setBoxesArr] = useState([]);
+  const [formData, setFormData] = useState(INITIAL_STATE);
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setFormData((fData) => ({
@@ -18,7 +19,8 @@ function BoxList() {
   const submitHandler = (e) => {
     e.preventDefault();
     let newBox = {...formData};
-    setBoxesArr((oldBoxesArr) => [...oldBoxesArr, newBox])
+    setBoxesArr((oldBoxesArr) => [...oldBoxesArr, newBox]);
+    setFormData(INITIAL_STATE);
   }
 
   return (
