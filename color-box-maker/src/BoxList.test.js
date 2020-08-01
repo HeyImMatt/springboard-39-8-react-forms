@@ -6,3 +6,7 @@ it('renders BoxList without crashing', () => {
   render(<BoxList />);
 }) 
 
+it('matches snapshot', () => {
+  const { asFragment } = render(<BoxList />);
+  expect(asFragment()).toMatchSnapshot();
+})
