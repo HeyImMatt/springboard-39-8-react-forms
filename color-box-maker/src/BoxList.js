@@ -44,6 +44,14 @@ function BoxList() {
           value={formData.height}
           onChange={changeHandler}
         />
+        <label htmlFor="backgroundColor">Box Background Color(hex code or valid css color name):</label>
+        <input
+          type="text"
+          id="backgroundColor"
+          name="backgroundColor"
+          value={formData.backgroundColor}
+          onChange={changeHandler}
+        />
         <button>Create Box</button>
       </form>
     </div>
