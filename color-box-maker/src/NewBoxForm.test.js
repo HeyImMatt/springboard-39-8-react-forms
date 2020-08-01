@@ -21,4 +21,20 @@ describe('NewBoxForm Component', () => {
       />);
       expect(asFragment()).toMatchSnapshot();
   })
+
+  it('starts form with empty fields', () => {
+    const { getByLabelText } = render(<NewBoxForm 
+      formData={intialFormValue}
+      changeHandler={mockFunction} 
+      />);
+    
+      const widthInput = getByLabelText('Box Width (in pixels):');
+      const heightInput = getByLabelText('Box Height (in pixels):');
+      const boxBackgroundColorInput = getByLabelText('Box Background Color(hex code or valid css color name):');
+      
+      expect(widthInput.value).toBe('');
+      expect(heightInput.value).toBe('');
+      expect(boxBackgroundColorInput.value).toBe('');
+  })
+
 })

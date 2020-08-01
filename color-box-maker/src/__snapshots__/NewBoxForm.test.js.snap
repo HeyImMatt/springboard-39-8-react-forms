@@ -26,7 +26,7 @@ exports[`NewBoxForm Component matches snapshot 1`] = `
       value=""
     />
     <label
-      for="backgroundColor"
+      for="boxBackgroundColor"
     >
       Box Background Color(hex code or valid css color name):
     </label>

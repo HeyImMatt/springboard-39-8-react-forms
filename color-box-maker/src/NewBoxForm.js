@@ -20,7 +20,7 @@ function NewBoxForm({ formData, submitHandler, changeHandler}) {
         value={formData.height}
         onChange={changeHandler}
       />
-      <label htmlFor="backgroundColor">Box Background Color(hex code or valid css color name):</label>
+      <label htmlFor="boxBackgroundColor">Box Background Color(hex code or valid css color name):</label>
       <input
         type="text"
         id="boxBackgroundColor"
