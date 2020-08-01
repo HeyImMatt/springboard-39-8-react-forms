@@ -3,7 +3,8 @@ import { render, fireEvent } from '@testing-library/react';
 import NewBoxForm from './NewBoxForm';
 
 describe('NewBoxForm Component', () => {
-  const mockFunction = jest.fn();
+  const mockChangeHandler = jest.fn();
+  const mockSubmitHandler = jest.fn();
   const intialFormValue = {
     width: '', 
     height: '', 
@@ -12,26 +13,33 @@ describe('NewBoxForm Component', () => {
   const changedFormData = {...intialFormValue, width: '100'};
 
   it('renders form without crashing', () => {
-    render(<NewBoxForm formData={intialFormValue} changeHandler={mockFunction} />)
+    render(<NewBoxForm 
+      formData={intialFormValue} 
+      changeHandler={mockChangeHandler} 
+      submitHandler={mockSubmitHandler} 
+      />)
   }) 
 
   it('matches snapshot', () => {
     const { asFragment } = render(<NewBoxForm 
       formData={intialFormValue}
-      changeHandler={mockFunction} 
+      changeHandler={mockChangeHandler} 
+      submitHandler={mockSubmitHandler}
       />);
       expect(asFragment()).toMatchSnapshot();
   })
 
-  it('tests form getting data', () => {
-    const { getByLabelText, rerender } = render(<NewBoxForm 
+  it('tests form operation', () => {
+    const { getByLabelText, rerender, queryByText } = render(<NewBoxForm 
       formData={intialFormValue}
-      changeHandler={mockFunction} 
+      changeHandler={mockChangeHandler} 
+      submitHandler={mockSubmitHandler}
       />);
     
       const widthInput = getByLabelText('Box Width (in pixels):');
       const heightInput = getByLabelText('Box Height (in pixels):');
       const boxBackgroundColorInput = getByLabelText('Box Background Color(hex code or valid css color name):');
+      const addBoxBtn = queryByText('Create Box')
       
       expect(widthInput.value).toBe('');
       expect(heightInput.value).toBe('');
@@ -41,11 +49,16 @@ describe('NewBoxForm Component', () => {
 
       rerender(<NewBoxForm 
         formData={changedFormData}
-        changeHandler={mockFunction} 
+        changeHandler={mockChangeHandler} 
+        submitHandler={mockSubmitHandler}
         />);
 
-      expect(mockFunction).toBeCalledTimes(1);
+      expect(mockChangeHandler).toBeCalledTimes(1);
       expect(widthInput.value).toBe('100');
+
+      fireEvent.click(addBoxBtn);
+
+      expect(mockSubmitHandler).toBeCalledTimes(1);
   }) 
 
 })
