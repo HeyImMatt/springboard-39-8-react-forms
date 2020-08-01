@@ -9,6 +9,7 @@ describe('NewBoxForm Component', () => {
     height: '', 
     boxBackgroundColor: ''
   }
+  const changedFormData = {...intialFormValue, width: '100'};
 
   it('renders form without crashing', () => {
     render(<NewBoxForm formData={intialFormValue} changeHandler={mockFunction} />)
@@ -22,8 +23,8 @@ describe('NewBoxForm Component', () => {
       expect(asFragment()).toMatchSnapshot();
   })
 
-  it('starts form with empty fields', () => {
-    const { getByLabelText } = render(<NewBoxForm 
+  it('tests form getting data', () => {
+    const { getByLabelText, rerender } = render(<NewBoxForm 
       formData={intialFormValue}
       changeHandler={mockFunction} 
       />);
@@ -35,6 +36,16 @@ describe('NewBoxForm Component', () => {
       expect(widthInput.value).toBe('');
       expect(heightInput.value).toBe('');
       expect(boxBackgroundColorInput.value).toBe('');
-  })
+
+      fireEvent.change(widthInput, { target: { value: '100'}});
+
+      rerender(<NewBoxForm 
+        formData={changedFormData}
+        changeHandler={mockFunction} 
+        />);
+
+      expect(mockFunction).toBeCalledTimes(1);
+      expect(widthInput.value).toBe('100');
+  }) 
 
 })
