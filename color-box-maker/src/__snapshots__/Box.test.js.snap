@@ -10,7 +10,7 @@ exports[`matches snapshot 1`] = `
       <button
         type="button"
       >
-        X
+        Remove X
       </button>
     </div>
   </div>

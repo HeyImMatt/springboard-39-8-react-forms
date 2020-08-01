@@ -12,7 +12,7 @@ function Box({idx, removeBox, width, height, boxBackgroundColor}) {
         height: `${height}px`,
         backgroundColor: `${boxBackgroundColor}`
       }}>
-      <button type="button" onClick={() => removeBox(idx)}>X</button>
+        <button type="button" onClick={() => removeBox(idx)}>Remove X</button>
       </div>
     </div>
   )
