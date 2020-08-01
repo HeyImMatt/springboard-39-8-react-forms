@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './BoxList.css'
 
 function BoxList() {
   const INITIAL_STATE = {
