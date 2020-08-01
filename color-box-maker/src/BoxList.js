@@ -36,6 +36,14 @@ function BoxList() {
           value={formData.width}
           onChange={changeHandler}
         />
+        <label htmlFor="height">Box Height (in pixels):</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          value={formData.height}
+          onChange={changeHandler}
+        />
         <button>Create Box</button>
       </form>
     </div>
