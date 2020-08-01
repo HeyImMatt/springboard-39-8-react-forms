@@ -2,13 +2,23 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import NewBoxForm from './NewBoxForm';
 
-it('renders form without crashing', () => {
-  render(<NewBoxForm formData={{width: '', height: '', boxBackgroundColor: ''}} />)
-}) 
+describe('NewBoxForm Component', () => {
+  const mockFunction = jest.fn();
+  const intialFormValue = {
+    width: '', 
+    height: '', 
+    boxBackgroundColor: ''
+  }
 
-it('matches snapshot', () => {
-  const { asFragment } = render(<NewBoxForm 
-    formData={{width: '', height: '', boxBackgroundColor: ''}} 
-    />);
-    expect(asFragment()).toMatchSnapshot();
+  it('renders form without crashing', () => {
+    render(<NewBoxForm formData={intialFormValue} changeHandler={mockFunction} />)
+  }) 
+
+  it('matches snapshot', () => {
+    const { asFragment } = render(<NewBoxForm 
+      formData={intialFormValue}
+      changeHandler={mockFunction} 
+      />);
+      expect(asFragment()).toMatchSnapshot();
+  })
 })
