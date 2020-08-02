@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import NewTodoForm from './NewTodoForm';
+import TodoItem from './TodoItem'
 
 function TodoList() {
   const INITIAL_FORM_DATA = {
@@ -23,11 +24,14 @@ function TodoList() {
     setFormData(INITIAL_FORM_DATA);
   }
   return(
-    <NewTodoForm 
-    formData={formData}
-    changeHandler={changeHandler}
-    submitHandler={submitHandler}
-    />
+    <>
+      <NewTodoForm 
+      formData={formData}
+      changeHandler={changeHandler}
+      submitHandler={submitHandler}
+      />
+      {todoList.map((item) => <TodoItem item={item} />)}
+    </>
   )
 }
 
