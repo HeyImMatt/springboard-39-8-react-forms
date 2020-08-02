@@ -33,6 +33,14 @@ function TodoList() {
     })
   }
 
+  const completeTodo = (e) => {
+    const updatedArr = [...todoList]
+    const idx = e.target.parentElement.id;
+    const todo = updatedArr[idx];
+    todo.isComplete ? todo.isComplete = false : todo.isComplete = true;
+    setTodoList(updatedArr);
+  }
+
   return(
     <>
       <NewTodoForm 
@@ -41,7 +49,7 @@ function TodoList() {
       submitHandler={submitHandler}
       />
       <h3>Todo List</h3>
-      {todoList.map((item, idx) => <TodoItem item={item} idx={idx} deleteTodo={deleteTodo} />)}
+      {todoList.map((item, idx) => <TodoItem item={item} idx={idx} deleteTodo={deleteTodo} completeTodo={completeTodo} />)}
     </>
   )
 }
