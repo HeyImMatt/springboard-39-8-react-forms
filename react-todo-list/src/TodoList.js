@@ -30,6 +30,7 @@ function TodoList() {
       changeHandler={changeHandler}
       submitHandler={submitHandler}
       />
+      <h3>Todo List</h3>
       {todoList.map((item) => <TodoItem item={item} />)}
     </>
   )

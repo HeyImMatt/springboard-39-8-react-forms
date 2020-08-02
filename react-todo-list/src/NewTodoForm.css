@@ -3,3 +3,7 @@ input {
   margin: 10px auto;
   width: 300px;
 }
+
+button {
+  margin-bottom: 50px;
+}
