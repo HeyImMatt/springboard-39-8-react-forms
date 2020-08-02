@@ -12,7 +12,7 @@ function NewTodoForm({ formData, changeHandler, submitHandler }) {
     value={formData.todo}
     onChange={changeHandler}
     />
-    <button type="submit">Add Todo</button>
+    <button type="submit" className="add-btn">Add Todo</button>
   </form>
   );
 }

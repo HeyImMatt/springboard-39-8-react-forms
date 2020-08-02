@@ -23,6 +23,16 @@ function TodoList() {
     setTodoList((list) => [...list, formData])
     setFormData(INITIAL_FORM_DATA);
   }
+
+  const deleteTodo = (e) => {
+    const idx = e.target.parentElement.id;
+    setTodoList((list) => {
+      const newList = [...list];
+      newList.splice(idx, 1);
+      return newList
+    })
+  }
+
   return(
     <>
       <NewTodoForm 
@@ -31,7 +41,7 @@ function TodoList() {
       submitHandler={submitHandler}
       />
       <h3>Todo List</h3>
-      {todoList.map((item) => <TodoItem item={item} />)}
+      {todoList.map((item, idx) => <TodoItem item={item} idx={idx} deleteTodo={deleteTodo} />)}
     </>
   )
 }
