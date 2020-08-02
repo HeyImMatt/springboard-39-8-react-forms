@@ -20,6 +20,7 @@ function TodoList() {
   const submitHandler = (e) => {
     e.preventDefault();
     setTodoList((list) => [...list, formData])
+    setFormData(INITIAL_FORM_DATA);
   }
   return(
     <NewTodoForm 
